@@ -5,42 +5,14 @@ function loadUsrers(){
 };
 
 function displayUsers(data){
-    for(const user of data){
-        console.log(user);
-    }
     let users = document.getElementById('users');
     users.innerHTML = '';
     data.forEach(user => {
         let li = document.createElement('li');
-        li.innerText = `${user.name} - ${user.email}`;
+        li.innerText = `${user.name} - ${user.email} - ${user.phone} - ${user.email}`;
         users.appendChild(li);
  });
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 
 
 
@@ -63,3 +35,60 @@ function displayPost(post){
     })
     
 }
+
+
+
+// code with try,cach,and asyn and await ...................................
+// Arrow function + async/await
+const loadPost = async () => {
+  try {
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const posts = await res.json();
+    displayPost(posts);
+  } catch (error) {
+    console.error("Error loading posts:", error);
+  }
+};
+
+// Arrow function for display
+const displayPost = (posts) => {
+  const container = document.getElementById('post');
+  container.innerHTML = '';
+
+  posts.forEach(post => {
+    let div = document.createElement('div');
+    div.innerHTML = `
+      <h3>${post.title}</h3>
+      <p>${post.body}</p>
+      <hr>
+    `;
+    container.appendChild(div);
+  });
+};
+
+
+// this code with axios.......................................
+// Arrow function + async/await + Axios
+const loadPost = async () => {
+  try {
+    const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
+    displayPost(res.data);   // Axios-এ data থাকে res.data তে
+  } catch (error) {
+    console.error("Error loading posts:", error);
+  }
+};
+
+const displayPost = (posts) => {
+  const container = document.getElementById('post');
+  container.innerHTML = '';
+
+  posts.forEach(post => {
+    let div = document.createElement('div');
+    div.innerHTML = `
+      <h3>${post.title}</h3>
+      <p>${post.body}</p>
+      <hr>
+    `;
+    container.appendChild(div);
+  });
+};
