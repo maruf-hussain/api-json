@@ -38,8 +38,8 @@ function displayPost(post){
 
 
 
-// code with try,cach,and asyn and await ...................................
-// Arrow function + async/await
+// code with try,catch,and async and await ...................................
+
 const loadPost = async () => {
   try {
     const res = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -68,11 +68,11 @@ const displayPost = (posts) => {
 
 
 // this code with axios.......................................
-// Arrow function + async/await + Axios
+
 const loadPost = async () => {
   try {
     const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    displayPost(res.data);   // Axios-এ data থাকে res.data তে
+    displayPost(res.data);   
   } catch (error) {
     console.error("Error loading posts:", error);
   }
