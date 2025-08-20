@@ -5,6 +5,9 @@ function loadUsrers(){
 };
 
 function displayUsers(data){
+    for(const user of data){
+        console.log(user);
+    }
     let users = document.getElementById('users');
     users.innerHTML = '';
     data.forEach(user => {
